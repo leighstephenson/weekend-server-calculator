@@ -3,15 +3,34 @@ const express = require( 'express' );
 const app = express();
 const port = 5001;
 
-//enter code here, array for objects, app.get, app.post, etc.
+//TODO enter code here, array for objects, app.get, app.post, etc.
 
 
 
+const historyArray = [ //empty array to store history
+    {number1: 1, number2: 2},
+
+    
+]; 
 
 
 //! allow req.body, needed for post request
 app.use(express.json());
 
+
+//!GET request
+app.get('/calculations', (req, res) => {
+    console.log('GET request made for /calculations')
+    res.send(historyArray); 
+});
+
+//!POST request
+app.post('/calculations', (req, res) => {
+    console.log ('POST request made for /calculations');
+    console.log ('req.body=' req.body)
+    historyArray.push(numbersToAdd);
+    res.sendStatus(201); //success message
+})
 
 
 
