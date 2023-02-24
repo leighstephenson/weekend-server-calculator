@@ -8,12 +8,21 @@
     <h2> Server Side Calculator</h2>
 
     <input type='number' id='firstNumber' placeholder='firstNumber' />
-    <input type='number' id='secondNumber' placeholder='secondNumber' />
-    <button  onclick="submit(event)" id='submitButton'>=</button>
+   
+    <button> + </button>
+    <button> - </button>
+    <button> * </button>
+    <button> / </button>
 
-    
+    <input type='number' id='secondNumber' placeholder='secondNumber' />
+
+    <button  onclick="submit(event)" id="submitButton"> = </button>
+    <button onclick="clear(event)" id="clearButton"> c </button>
+
+
+    <h2> <!--Display number here--> </h2>
     <div id='content'>
-      <p> </p>
+      <p> <!--Display history here--> </p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
