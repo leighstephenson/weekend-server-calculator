@@ -8,7 +8,11 @@ const port = 5001;
 
 
 const historyArray = [ //empty array to store history
-    {number1: 1, number2: 2},
+ {  firstNumber: 1, 
+    operation: '+', 
+    secondNumber: 2,
+    //TODO may need to add the = and answer here? We'll get there.
+ }
 
     
 ]; 
@@ -27,7 +31,8 @@ app.get('/calculations', (req, res) => {
 //!POST request
 app.post('/calculations', (req, res) => {
     console.log ('POST request made for /calculations');
-    console.log ('req.body=' req.body)
+    console.log ('req.body='. req.body) //requests data that was sent from client
+    let numbersToAdd = req.body
     historyArray.push(numbersToAdd);
     res.sendStatus(201); //success message
 })
