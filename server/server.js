@@ -4,6 +4,7 @@ const app = express();
 const port = 5001;
 
 //TODO enter code here, array for objects, app.get, app.post, etc.
+//TODO need to build actual math functions here
 
 
 
@@ -11,7 +12,7 @@ const historyArray = [ //empty array to store history
  {  firstNumber: 1, 
     operation: '+', 
     secondNumber: 2,
-    //TODO may need to add the = and answer here? We'll get there.
+    answer: 3,
  }
 
     

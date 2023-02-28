@@ -7,14 +7,14 @@
     <h1>Weekend Challenge #2</h1>
     <h2> Server Side Calculator</h2>
 
-    <input type='number' id='firstNumber' placeholder='firstNumber' />
+    <input type='number' class='userInput' id='firstNumber' placeholder='firstNumber' />
    
-    <button> + </button>
-    <button> - </button>
-    <button> * </button>
-    <button> / </button>
+    <button onclick="addButton(event)" id="add"> + </button>
+    <button onclick="subtractButton(event)" id="subtract"> - </button>
+    <button onclick="multiplyButton(event)" id="multiply"> * </button>
+    <button onclick="divideButton(event)" id="divide"> / </button>
 
-    <input type='number' id='secondNumber' placeholder='secondNumber' />
+    <input type='number' class='userInput' id='secondNumber' placeholder='secondNumber' />
 
     <button  onclick="submit(event)" id="submitButton"> = </button>
     <button onclick="clear(event)" id="clearButton"> c </button>

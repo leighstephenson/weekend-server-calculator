@@ -6,9 +6,18 @@ console.log('Testing JS');
 // the server via a POST. 
 // There should also be a 'C' button that will clear the user input fields.
 
+
+//! Global Variables here 
+
+let answer = '';
+let operation = ''; //Sets initial value, to be changed w/ onClick events
+
+
+
+
 function getNumbers(){
         console.log('In getNumbers function');
-    axios.get('/calculations').then((response)=> {
+    axios.get('/calculations').then((response)=> { 
         console.log('response in getNumbers', response);
     let numbersToAdd = response.data;
     let contentDiv = document.querySelector("#content");
@@ -16,10 +25,10 @@ function getNumbers(){
     for (let number of numbersToAdd) {
         contentDiv.innerHTML += `
         
-        <p> firstNumber: ${number.firstNumber}, secondNumber: ${number.secondNumber} </p>
+        <p> firstNumber: ${number.firstNumber}, operation here: ${number.operation},   secondNumber: ${number.secondNumber} </p>
         
         `;
-    }    //TODO ^ think I need to add an operation property and the answer. 
+    } 
 })
 
 
@@ -27,8 +36,14 @@ function getNumbers(){
 
 getNumbers(); //calls function to append the DOM
 
+
+//!Submit/Equals function
+
 function submit(event){ //start
     event.preventDefault(); //stops default refresh
+    let userInput = document.querySelector(".userInput"); //sets var to = userInput class on HTML
+    userInput.reset(); //makes input form reset
+
             console.log('In submit function')
 
 
@@ -38,7 +53,9 @@ function submit(event){ //start
 
     let numbersToAdd = { //starts new object
         firstNumber: firstNumber,
-        secondNumber, secondNumber,
+        operation: operation,
+        secondNumber: secondNumber,
+        answer: answer, //TODO need to finish building answer in
     }; //ends object
 
     axios.post('/calculations', numbersToAdd).then((response)=> {
@@ -51,7 +68,40 @@ function submit(event){ //start
 }; //end submit function
 
 
+//! Choosing the operation
+//On click, user will choose which operation to use in their calculation.
+//Need that value to carry over to the math function. Keeping separate for now 
+//But probably will have to go inside of the submit/equals function
 
+
+function addButton(event){
+    let operation = '+';
+    console.log('Chosen operation:', operation)
+};
+
+function subtractButton(event){
+    let operation = '-';
+    console.log('Chosen operation:', operation)
+
+};
+
+function divideButton(event){
+    let operation = '/';
+    console.log('Chosen operation:', operation)
+
+};
+
+function multiplyButton(event){
+    let operation = '*';
+    console.log('Chosen operation:', operation)
+
+}; // End operation functions
+
+
+
+
+
+//!Clear calculator
 
 function clear(event){ //start 
     console.log('In clear function') 
