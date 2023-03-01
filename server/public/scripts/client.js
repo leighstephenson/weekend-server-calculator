@@ -1,4 +1,4 @@
-console.log('Testing JS');
+//console.log('Testing JS');
 
 //X Create a user interface where the user can input two values (2 input elements) 
 // and then select type of mathematical operation. When the submit (`=` button) is 
@@ -42,7 +42,7 @@ getNumbers(); //calls function to append the DOM
 function submit(event){ //start
     event.preventDefault(); //stops default refresh
     let userInput = document.querySelector(".userInput"); //sets var to = userInput class on HTML
-    userInput.reset(); //makes input form reset
+    //userInput.reset(); //makes input form reset
 
             console.log('In submit function')
 
