@@ -14,6 +14,7 @@ let operation = ''; //Sets initial value, to be changed w/ onClick events
 
 
 
+//! GET request 
 
 function getNumbers(){
         console.log('In getNumbers function');
@@ -37,12 +38,11 @@ function getNumbers(){
 getNumbers(); //calls function to append the DOM
 
 
-//!Submit/Equals function
+//! Submit/Equals function
 
 function submit(event){ //start
     event.preventDefault(); //stops default refresh
-    let userInput = document.querySelector(".userInput"); //sets var to = userInput class on HTML
-    //userInput.reset(); //makes input form reset
+
 
             console.log('In submit function')
 
@@ -55,7 +55,7 @@ function submit(event){ //start
         firstNumber: firstNumber,
         operation: operation,
         secondNumber: secondNumber,
-        answer: answer, //TODO need to finish building answer in
+        answer: answer,
     }; //ends object
 
     axios.post('/calculations', numbersToAdd).then((response)=> {
@@ -64,15 +64,17 @@ function submit(event){ //start
     }).catch((error) => {
             console.log(error);
             alert('Something is wrong here...');
-    })
+    });
+
+
 }; //end submit function
 
 
-//! Choosing the operation
-//On click, user will choose which operation to use in their calculation.
-//Need that value to carry over to the math function. Keeping separate for now 
-//But probably will have to go inside of the submit/equals function
 
+//! Choosing the operation
+//TODO put these inside submit function maybe?
+//On click, user will choose which operation to use in their calculation.
+//Need that value to carry over to the math function.
 
 function addButton(event){
     let operation = '+';
@@ -99,12 +101,11 @@ function multiplyButton(event){
 
 
 
-
-
 //!Clear calculator
 
 function clear(event){ //start 
     console.log('In clear function') 
-
+ let userInput = document.querySelector(".userInput").value; //sets var to = userInput class on HTML
+userInput.reset(); //makes input form reset
     
 }; //end clear function

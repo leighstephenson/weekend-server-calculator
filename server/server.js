@@ -5,11 +5,10 @@ const port = 5001;
 app.use(express.json());
 
 //TODO enter code here, array for objects, app.get, app.post, etc.
-//TODO need to build actual math functions here
 
 
 //! Array for storing input and calculation history
-const historyArray = [ //empty array to store history
+const historyArray = [ //array to store history
  {  firstNumber: 1, 
     operation: '+', 
     secondNumber: 2,
@@ -20,6 +19,9 @@ const historyArray = [ //empty array to store history
 ]; 
 
 //! Do the math!!
+
+let answer = 0; 
+
 function doTheMath (firstNumber, operation, secondNumber){ //TODO are these the right inputs?
 if (operation === '+'){
   let answer = firstNumber + secondNumber 
@@ -55,9 +57,9 @@ app.get('/calculations', (req, res) => {
 app.post('/calculations', (req, res) => {
     console.log ('POST request made for /calculations');
     console.log ('req.body='. req.body) //requests data that was sent from client
-    let numbersToAdd = req.body //TODO this might be in the weong spot
+    let numbersToAdd = req.body //TODO this might be in the wrong spot
     historyArray.push(numbersToAdd);
-    doTheMath(firstNumber, operation, secondNumber) //TODO why 
+    doTheMath(firstNumber, operation, secondNumber) //TODO why are these showing as undeclared?
     res.sendStatus(201); //success message
 })
 
