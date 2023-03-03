@@ -25,11 +25,13 @@ function getNumbers(){
     contentDiv.innerHTML=''; //resets content div to prevent displaying duplicates
     for (let number of numbersToAdd) {
         contentDiv.innerHTML += `
-        
+
+        <h2> ${answer} </h2>
+
         <p> ${number.firstNumber} ${number.operation} ${number.secondNumber} = ${answer} </p>
         
         `;
-    } //TODO ^Answering is not displaying correctly 
+    } //TODO ^Answer is not displaying correctly 
 })
 
 
@@ -50,7 +52,7 @@ function submit(event){ //start
     let firstNumber = Number(document.querySelector('#firstNumber').value);
     let secondNumber = Number(document.querySelector('#secondNumber').value);
 
-            console.log('Inputs:', firstNumber, secondNumber);
+            console.log('Inputs:', firstNumber,'and', secondNumber);
 
     let numbersToAdd = { //starts new object
         firstNumber: firstNumber,
@@ -71,7 +73,6 @@ function submit(event){ //start
 }; //end submit function
 
 //! Choosing the operation
-//TODO put these inside submit function maybe?
 //On click, user will choose which operation to use in their calculation.
 //Need that value to carry over to the math function.
 
@@ -104,7 +105,6 @@ function multiplyButton(event){
 
 function clear(event){ //start 
     console.log('In clear function') 
- let userInput = document.querySelector(".userInput").value; //sets var to = userInput class on HTML
-userInput.reset(); //makes input form reset
-    
+    let userInput = document.querySelector(".userInput").value; //sets var to = userInput class on HTML
+   userInput.reset(); //makes input form reset
 }; //end clear function
