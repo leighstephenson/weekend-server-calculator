@@ -26,10 +26,10 @@ function getNumbers(){
     for (let number of numbersToAdd) {
         contentDiv.innerHTML += `
         
-        <p> firstNumber: ${number.firstNumber}, operation here: ${number.operation},   secondNumber: ${number.secondNumber} </p>
+        <p> ${number.firstNumber} ${number.operation} ${number.secondNumber} = ${answer} </p>
         
         `;
-    } 
+    } //TODO ^Answering is not displaying correctly 
 })
 
 
@@ -47,8 +47,9 @@ function submit(event){ //start
             console.log('In submit function')
 
 
-    let firstNumber = Number.document.querySelector('#firstNumber').value;
-    let secondNumber = Number.document.querySelector('#secondNumber').value;
+    let firstNumber = Number(document.querySelector('#firstNumber').value);
+    let secondNumber = Number(document.querySelector('#secondNumber').value);
+
             console.log('Inputs:', firstNumber, secondNumber);
 
     let numbersToAdd = { //starts new object
@@ -69,32 +70,30 @@ function submit(event){ //start
 
 }; //end submit function
 
-
-
 //! Choosing the operation
 //TODO put these inside submit function maybe?
 //On click, user will choose which operation to use in their calculation.
 //Need that value to carry over to the math function.
 
 function addButton(event){
-    let operation = '+';
+    operation = '+';
     console.log('Chosen operation:', operation)
 };
 
 function subtractButton(event){
-    let operation = '-';
+    operation = '-';
     console.log('Chosen operation:', operation)
 
 };
 
 function divideButton(event){
-    let operation = '/';
+    operation = '/';
     console.log('Chosen operation:', operation)
 
 };
 
 function multiplyButton(event){
-    let operation = '*';
+    operation = '*';
     console.log('Chosen operation:', operation)
 
 }; // End operation functions

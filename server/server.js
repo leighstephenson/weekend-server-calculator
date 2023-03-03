@@ -22,25 +22,33 @@ const historyArray = [ //array to store history
 
 let answer = 0; 
 
-function doTheMath (firstNumber, operation, secondNumber){ //TODO are these the right inputs?
-if (operation === '+'){
-  let answer = firstNumber + secondNumber 
-  console.log(firstNumber, operation, secondNumber,'=', answer);
+function doTheMath (numbersToAdd){ 
+  console.log(numbersToAdd);
+if (numbersToAdd.operation === '+'){
+   answer = numbersToAdd.firstNumber + numbersToAdd.secondNumber 
+  //console.log(numbersToAdd.firstNumber, numbersToAdd.operation, numbersToAdd.secondNumber,'=', numbersToAdd.answer);
 
-}else if (operation === '-'){
-  let answer = firstNumber - secondNumber
-  console.log(firstNumber, operation, secondNumber,'=', answer);
+}else if (numbersToAdd.operation === '-'){
+   answer = numbersToAdd.firstNumber - numbersToAdd.secondNumber
+  //console.log(numbersToAddfirstNumber, numbersToAddoperation, numbersToAddsecondNumber,'=', answer);
 
-}else if (operation === '/'){
-  let answer = firstNumber / secondNumber
-  console.log(firstNumber, operation, secondNumber,'=', answer);
+}else if (numbersToAdd.operation === '/'){
+   answer = numbersToAdd.firstNumber / numbersToAdd.secondNumber
+  //console.log(firstNumber, operation, secondNumber,'=', answer);
 
-}else if (operation === '*'){
-  let answer = firstNumber * secondNumber
-  console.log(firstNumber, operation, secondNumber,'=', answer);
+}else if (numbersToAdd.operation === '*'){
+   answer = numbersToAdd.firstNumber * numbersToAdd.secondNumber
+  //console.log(firstNumber, operation, secondNumber,'=', answer);
 
   };
-  
+  let addNumbers = {
+    firstNumber: numbersToAdd.firstNumber,
+    operation: numbersToAdd.operation, 
+    secondNumber: numbersToAdd.secondNumber,
+    answer: answer,
+  }
+  console.log(addNumbers);
+  historyArray.push(addNumbers);
 }; //End doTheMath function
 
 //! allow req.body, needed for post request
@@ -56,10 +64,10 @@ app.get('/calculations', (req, res) => {
 //!POST request
 app.post('/calculations', (req, res) => {
     console.log ('POST request made for /calculations');
-    console.log ('req.body='. req.body) //requests data that was sent from client
-    let numbersToAdd = req.body //TODO this might be in the wrong spot
-    historyArray.push(numbersToAdd);
-    doTheMath(firstNumber, operation, secondNumber) //TODO why are these showing as undeclared?
+    console.log ('req.body=', req.body.firstNumber) //requests data that was sent from client
+    let numbersToAdd = req.body 
+    doTheMath(req.body) 
+    
     res.sendStatus(201); //success message
 })
 
@@ -72,3 +80,4 @@ app.use(express.static('server/public'));
 app.listen(port, () => { //start the app
   console.log(`server running on: ${port}`);
 }); // end 
+
