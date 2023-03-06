@@ -24,7 +24,7 @@ function getNumbers(){
     let contentDiv = document.querySelector("#content");
     contentDiv.innerHTML=''; //resets content div to prevent displaying duplicates
     for (let number of numbersToAdd) {
-        contentDiv.innerHTML = `
+        contentDiv.innerHTML += `
 
         <h2> ${number.answer} </h2>
 
