@@ -24,16 +24,18 @@ function getNumbers(){
     let contentDiv = document.querySelector("#content");
     contentDiv.innerHTML=''; //resets content div to prevent displaying duplicates
     for (let number of numbersToAdd) {
-        contentDiv.innerHTML += `
+        contentDiv.innerHTML = `
 
-        <h2> ${answer} </h2>
+        <h2> ${number.answer} </h2>
 
-        <p> ${number.firstNumber} ${number.operation} ${number.secondNumber} = ${answer} </p>
+        <p> ${number.firstNumber} ${number.operation} ${number.secondNumber} = ${number.answer} </p>
         
         `;
-    } //TODO ^Answer is not displaying correctly 
-})
-
+    }
+}).catch((error) => {
+    console.log(error);
+    alert('Something is wrong here...');
+});
 
 }; //ends getNumbers function
 
@@ -102,9 +104,15 @@ function multiplyButton(event){
 
 
 //!Clear calculator
+//TODO not working yet
+function clearDiv(event){ //start 
+console.log('In clear function'); 
 
-function clear(event){ //start 
-    console.log('In clear function') 
-    let userInput = document.querySelector(".userInput").value; //sets var to = userInput class on HTML
-   userInput.reset(); //makes input form reset
+let firstNumber = document.querySelector('#firstNumber'); 
+let secondNumber = document.querySelector('#secondNumber'); 
+
+firstNumber.value = '';
+secondNumber.value = '';
+
 }; //end clear function
+
